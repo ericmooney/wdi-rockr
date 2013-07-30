@@ -4,5 +4,8 @@ class VenuesController < ApplicationController
   end
 
   def create
+    Venue.create(params[:venue])
+
+    @venues = Venue.ordered.includes(:concerts)
   end
 end
