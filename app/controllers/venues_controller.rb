@@ -7,5 +7,7 @@ class VenuesController < ApplicationController
     Venue.create(params[:venue])
 
     @venues = Venue.ordered.includes(:concerts)
+
+    render :template => "concerts/create"
   end
 end

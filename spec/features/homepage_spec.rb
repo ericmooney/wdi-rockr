@@ -20,7 +20,6 @@ describe "Homepage", js: true do
   describe "submitting new venue form" do
     it "updates list of concerts" do
       click_link "New Venue"
-      sleep 1
 
       fill_in "Name", with: "The Slowdown"
       click_button "Save Venue"
@@ -35,9 +34,13 @@ describe "Homepage", js: true do
 
   describe "submitting new concert form" do
     it "updates list of concerts" do
+      FactoryGirl.create(:venue, name: "The Slowdown")
+
       click_link "New Concert"
 
-      fill_in "Artist Name", with: "The Mynabirds"
+      fill_in "Artist name", with: "The Mynabirds"
+      select('The Slowdown', :from => 'concert_venue_id')
+
       click_button "Save Concert"
 
       # Form should go away.
