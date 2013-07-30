@@ -32,4 +32,19 @@ describe "Homepage", js: true do
       expect(page.find('#concerts')).to have_content("The Slowdown")
     end
   end
+
+  describe "submitting new concert form" do
+    it "updates list of concerts" do
+      click_link "New Concert"
+
+      fill_in "Artist Name", with: "The Mynabirds"
+      click_button "Save Concert"
+
+      # Form should go away.
+      expect(page).to_not have_css('form#new_concert')
+
+      # Concerts DIV should have the name of the new venue.
+      expect(page.find('#concerts')).to have_content("The Mynabirds")
+    end
+  end
 end
