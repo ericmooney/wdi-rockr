@@ -4,10 +4,13 @@ class VenuesController < ApplicationController
   end
 
   def create
-    Venue.create(params[:venue])
+    @venue = Venue.new(params[:venue])
 
-    @venues = Venue.ordered.includes(:concerts)
-
-    render :template => "concerts/create"
+    if @venue.save
+      @venues = Venue.ordered.includes(:concerts)
+      render :template => "concerts/create"
+    else
+      render :json => {fields: @venue.errors.keys, msgs: @venue.errors.full_messages}, :status => 422
+    end
   end
 end
