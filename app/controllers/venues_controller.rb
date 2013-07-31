@@ -10,7 +10,7 @@ class VenuesController < ApplicationController
       @venues = Venue.ordered.includes(:concerts)
       render :template => "concerts/create"
     else
-      render :json => {fields: @venue.errors.keys, msgs: @venue.errors.full_messages}, :status => 422
+      render :template => "concerts/create", :status => 422
     end
   end
 end

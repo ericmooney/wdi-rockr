@@ -3,7 +3,7 @@ class Venue < ActiveRecord::Base
 
   has_many :concerts, :dependent => :destroy
 
-  validates :name, :presence => true
+  validates :name, :presence => true, :length => {:minimum => 5}
 
   def self.ordered
     self.order("name ASC")

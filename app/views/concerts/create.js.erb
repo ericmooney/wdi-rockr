@@ -1,3 +1,11 @@
+// Empty the New Venue form regardless, because stale form inputs are unprofessional.
 $('#forms').empty();
 
-$('#concerts').empty().append("<%= j render 'static_pages/concerts' %>");
+// If there are errors:
+<% if @venue.errors.any? %>
+  $('#errors').empty().append("<%= j render :partial => 'layouts/form_errors', :locals => {:errors => @venue.errors.full_messages} %>");
+
+// If there are NOT errors:
+<% else %>
+  $('#concerts').empty().append("<%= j render 'static_pages/concerts' %>");
+<% end %>

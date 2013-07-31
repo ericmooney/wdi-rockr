@@ -7,13 +7,13 @@ jQuery ->
   #   for message in error_msgs
   #     alert(message)
 
-  form_errors = (request, data) ->
-    console.log data
+  # form_errors = (request, data) ->
+  #   console.log data
 
-    fields = data.responseJSON.fields
-    msgs = data.responseJSON.msgs
+  #   fields = data.responseJSON.fields
+  #   msgs = data.responseJSON.msgs
 
-    for message in msgs
-      $('#errors').append(message)
+  #   for message in msgs
+  #     $('#errors').append(message)
 
-  $("body").on('ajax:error', "form[data-remote=true]", form_errors);
+  # $("body").on('ajax:error', "form[data-remote=true]", form_errors);
