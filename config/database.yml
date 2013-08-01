@@ -15,6 +15,7 @@ test:
   pool: 5
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASS'] %>
+  min_messages: WARNING
   #host: localhost
 
 production:
