@@ -47,3 +47,5 @@ group :development, :test do
   gem "capybara"
   gem 'selenium-webdriver'
 end
+
+gem 'omniauth-twitter'
